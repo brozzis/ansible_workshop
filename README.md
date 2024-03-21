@@ -1,8 +1,4 @@
 
-
-- installazione
-- configurazione ansible.cfg
-
 ## inventory
 
 - inventory 
@@ -16,20 +12,11 @@
 
 sposta result (67)
 
+## moduli
 
-## ad hoc
-
-- ansible -m useradd ansible +ssh +wheels +...
-
-- ansible -m ping -i inventory all
-- ansible -m command -i inventory -a "useradd ansible" ...
-
-## documentazione
-
-- ansible-doc
+sposta lineinfile (74)
 
 ## facts
 
 demo
 
-# ansible_workshop
