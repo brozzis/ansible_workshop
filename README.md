@@ -10,11 +10,10 @@
 
 - [variabili](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html)
 
-sposta result (67)
-
 ## moduli
 
-sposta lineinfile (74)
+- lineinfile
+- template (jinja2)
 
 ## facts
 
