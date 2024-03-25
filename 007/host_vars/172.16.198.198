@@ -1,0 +1,4 @@
+
+name: db01.workshop.lan
+
+packages: [redis]

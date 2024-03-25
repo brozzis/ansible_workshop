@@ -1,0 +1,13 @@
+---
+- name: Install (if registered)
+  hosts: all
+  gather_facts: False
+  become: True
+  tasks:
+
+    - name: Install the packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ packages }}"
+      

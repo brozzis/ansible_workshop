@@ -1,0 +1,15 @@
+- name: check registered variable for emptiness
+  hosts: all
+  remote_user: ansible
+  become: yes
+
+  tasks:
+
+      - name: List contents of directory
+        ansible.builtin.command: ls /root/mydir
+        register: contents
+
+      - name: Check contents for emptiness
+        ansible.builtin.debug:
+          msg: "Directory is empty"
+        when: contents.stdout == ""

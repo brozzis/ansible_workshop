@@ -1,0 +1,20 @@
+---
+- name: playbook to test templates
+  hosts: localhost
+  vars:
+   favourite_color: blue
+   age: 21
+   voting_center: ab456-g
+   fruits:
+    - banana
+    - apple
+    - mango
+    - pear
+    - avocado
+    - kiwi
+
+  tasks:
+  - name: template test
+    template:
+      src: templates/template.j2
+      dest: report_output

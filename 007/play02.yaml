@@ -1,0 +1,22 @@
+---
+- name: Just on web, create a file
+  hosts: web
+  tasks:
+  - name: Create a file
+    file:
+      path: /tmp/ansible_test
+      state: touch
+
+- name: Test single failure
+  hosts: all
+  tasks:
+  - name: Should fail on db, and work on web
+    ansible.builtin.lineinfile:
+      path: /tmp/ansible_test    
+      line: "This is a test"
+      state: present
+
+  - name: Should see only on web
+    debug:
+      msg: "I'm still working on {{ansible_hostname}}"
+      

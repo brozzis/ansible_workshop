@@ -1,0 +1,14 @@
+
+[web]
+172.16.198.162
+
+[db]
+172.16.198.198
+
+[db:vars]
+ansible_ssh_user = root
+my_variable="Welcome to the db server"
+
+
+[web:vars]
+my_variable="Welcome to the web server"

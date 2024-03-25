@@ -1,0 +1,15 @@
+---
+- name: template [template]
+  become: true
+  hosts: all
+  tasks:
+
+# template
+
+  - name: Template
+    ansible.builtin.template:
+      src: etchosts.j2
+      dest: /tmp/hosts.conf
+      owner: root
+      group: root
+      mode: '0644'

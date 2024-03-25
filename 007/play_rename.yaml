@@ -1,0 +1,43 @@
+---
+- name: Rename nodes
+  hosts: all
+  become: True
+  tasks:
+      
+  - name: Set a hostname
+    ansible.builtin.hostname:
+        name: "{{ name }}"    
+
+  - name: restart the node
+    ansible.builtin.reboot:
+        
+#  - name: Wait for the node to come back
+#    ansible.builtin.wait_for_connection:
+#        delay: 60
+#        timeout: 300
+
+  - name: verify the hostname
+    ansible.builtin.command:
+        cmd: hostname
+    register: result
+    tags: show
+
+  - name: print the hostname from linux command
+    ansible.builtin.debug:
+        var: result.stdout
+    tags: show
+  
+  - name: Print the hostname in facts
+    ansible.builtin.debug:
+        msg: "The value in facts is: {{ ansible_facts['nodename'] }}"
+    tags: show
+        
+  - name: reRead the facts
+    ansible.builtin.gather_facts:
+    tags: show
+
+  - name: Show again the hostname in facts
+    ansible.builtin.debug:
+        msg: "The value in facts is: {{ ansible_facts['nodename'] }}"
+    tags: show
+  

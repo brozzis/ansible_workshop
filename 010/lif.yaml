@@ -1,0 +1,81 @@
+---
+- name: lineinfile
+  hosts: localhost
+  vars: 
+    filename: /tmp/lif.txt 
+  tasks:
+    - name: Remove the file
+      ansible.builtin.file:
+        path: "{{ filename }}"
+        state: absent
+
+    - name: Add a line to a file
+      ansible.builtin.lineinfile:
+        path: "{{ filename }}"
+        line: 'This is a new line'
+        create: yes
+
+    - name: verifica
+      ansible.builtin.command: 
+        cmd: cat {{ filename }}
+      register: result
+
+    - name: debug
+      ansible.builtin.debug:
+        var: result.stdout_lines
+        
+    #
+    # another line
+    #
+    - name: Add another line to a file
+      ansible.builtin.lineinfile:
+        path: "{{ filename }}"
+        line: 'This is a newer line'
+        insertafter: 'This is a new line'
+
+    - name: verifica
+      ansible.builtin.command: 
+        cmd: cat {{ filename }}
+      register: result
+
+    - name: debug
+      ansible.builtin.debug:
+        var: result.stdout_lines
+        
+        
+    #
+    # comment line
+    #
+    - name: Add another line to a file
+      ansible.builtin.lineinfile:
+        path: "{{ filename }}"
+        regexp: '^This is a new line$'
+        line: '# This is a new line'
+
+    - name: verifica
+      ansible.builtin.command: 
+        cmd: cat {{ filename }}
+      register: result
+
+    - name: debug
+      ansible.builtin.debug:
+        var: result.stdout_lines
+        
+    #
+    # remove all comments
+    #
+    - name: remove all comments
+      ansible.builtin.lineinfile:
+        path: "{{ filename }}"
+        state: absent
+        regexp: '^#'
+
+    - name: verifica
+      ansible.builtin.command: 
+        cmd: cat {{ filename }}
+      register: result
+
+    - name: debug
+      ansible.builtin.debug:
+        var: result.stdout_lines
+        

@@ -1,0 +1,3 @@
+name: web00.workshop.lan
+
+packages: [httpd, php, php-mysql]

@@ -1,21 +1,22 @@
+## Workshop 
 
-## inventory
-
-- inventory 
-- best practices hosts_var group_var 
-- ordine di lettura
-
-
-## variabli ??
-
-- [variabili](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html)
-
-## moduli
-
-- lineinfile
-- template (jinja2)
-
-## facts
-
-demo
-
+ - [installation](000/README.md)
+ - [&](000/README.md)
+ - [configuration](000/README.md)
+ - [inventory](001/README.md)
+ - [ah-hoc](002/README.md)
+ - [&](002/README.md)
+ - [inventory](002/README.md)
+ - [configuration](002/README.md)
+ - [Inventory](003/README.md)
+ - [and](003/README.md)
+ - [variable](003/README.md)
+ - [definitions](003/README.md)
+ - [basic](004/README.md)
+ - [playbook](004/README.md)
+ - [Variables](005/README.md)
+ - [playbooks](007/README.md)
+ - [Modules](010/README.md)
+ - [102](010/README.md)
+ - [conditionals](011/README.md)
+ - [loops](012/README.md)

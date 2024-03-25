@@ -1,0 +1,21 @@
+---
+- name: loop may be not necessary
+  hosts: localhost
+  tasks:
+  - name: Install a list of packages (suitable replacement for 2.11 loop deprecation warning)
+    ansible.builtin.yum:
+      name:
+        - nginx
+        - postgresql
+        - postgresql-server
+      state: present
+
+- name: Install a list of packages with a list variable
+  ansible.builtin.yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - httpd
+    - httpd-tools
+
+    
