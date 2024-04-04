@@ -1,0 +1,17 @@
+---
+- name: Example of assert module
+  hosts: all, localhost
+  gather_facts: no
+
+  tasks:
+  - name: "Proceed only if on Ubuntu"
+    ansible.builtin.assert:
+      that: “ansible_os_family != ‘Debian’”
+      fail_msg: “I’m not in the Debian family”
+      success_msg: “I’m a Debian”
+      
+  - name: "Proceed only if on RedHat"
+    ansible.builtin.assert:
+      that: “ansible_os_family != ‘RedHat’”
+      fail_msg: “I’m not in the RedHat family”
+      success_msg: “I’m a RedHat”

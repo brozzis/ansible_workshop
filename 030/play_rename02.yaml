@@ -1,5 +1,5 @@
 ---
-- name: Rename nodes
+- name: Rename nodes (with handlers)
   hosts: all
   become: True
   tasks:
@@ -7,9 +7,10 @@
   - name: Set a hostname
     ansible.builtin.hostname:
         name: "{{ name }}"    
+    tags: Set
+    notify: restart the node
 
-  - name: restart the node
-    ansible.builtin.reboot:
+
         
 #  - name: Wait for the node to come back
 #    ansible.builtin.wait_for_connection:
@@ -31,4 +32,18 @@
     ansible.builtin.debug:
         msg: "The value in facts is: {{ ansible_facts['nodename'] }}"
     tags: show
+
+  
+  - name: Use the template
+    ansible.builtin.template:
+      src: etchosts.j2
+      dest: /etc/hosts
+      backup: true
+      owner: root
+      group: root
+      mode: '0644'
+    tags: Set
         
+  handlers:
+  - name: restart the node
+    ansible.builtin.reboot:

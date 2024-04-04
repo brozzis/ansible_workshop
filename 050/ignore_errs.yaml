@@ -1,0 +1,13 @@
+---
+- name: ignore_errs
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: ignore_errs
+      command: /bin/false
+      ignore_errors: yes
+
+    - name: show that we ignored the error
+      debug:
+        msg: "This task was successful, anyhow."
