@@ -1,4 +1,4 @@
-## Workshop 
+## Workshop 
 
  - [installation & configuration](000/README.md)
  - [inventory](001/README.md)
