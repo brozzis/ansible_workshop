@@ -1,0 +1,13 @@
+---
+- name: Loop over dictionary items with dict2items filter
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Print server role info
+      ansible.builtin.debug:
+        msg: "Server: {{ item.key }}, Role: {{ item.value }}"
+      loop: "{{ servers | dict2items }}"
+      vars:
+        servers:
+          server1: 'web'
+          server2: 'database'

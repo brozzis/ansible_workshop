@@ -1,0 +1,13 @@
+--- 
+- name: Loop over a dict using with_items
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+  - name: add several users
+    ansible.builtin.debug:
+      msg: "Add user with Name: {{ item.name }} and Group Name: {{ item.groups }}"
+    with_items:
+      - { name: 'testuser1', groups: 'wheel' }
+      - { name: 'testuser2', groups: 'root' }
+      - { name: 'testuser3', groups: 'none' }
